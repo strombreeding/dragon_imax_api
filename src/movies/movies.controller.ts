@@ -6,8 +6,8 @@ export class MoviesController {
   constructor(private readonly movieService: MoviesService) {}
 
   @Get()
-  async getMovieList() {
-    const result = await this.movieService.getItem();
+  async getMovieList(@Body() body: { deviceId: string }) {
+    const result = await this.movieService.getItem(body.deviceId);
     return result;
   }
 

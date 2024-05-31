@@ -11,9 +11,6 @@ type Subscription = {
 @Schema()
 export class User {
   @Prop()
-  nickname: string;
-
-  @Prop()
   deviceId: string;
 
   @Prop()

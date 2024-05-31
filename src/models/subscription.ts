@@ -12,9 +12,6 @@ export class Subscription {
   deviceId: string;
 
   @Prop({ required: true })
-  date: string;
-
-  @Prop({ required: true })
   cinemaType: string; // 아이맥스, 4dx
 
   @Prop({ default: [] })

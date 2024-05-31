@@ -15,9 +15,8 @@ export class SubscriptionsController {
   @Post()
   async postNewSubscription(@Body() body: IFineNewCinemaType) {
     const result = await this.subscriptionService.insert(
-      body.date,
       body.cinemaType,
-      '123123',
+      body.deviceId,
       body.movieName,
       body.userId,
     );
