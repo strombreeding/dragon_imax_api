@@ -14,7 +14,6 @@ export class CrawlController {
 
   @Put()
   async putData(@Body() body: { date: string; movieData: MovieData[] }) {
-    // console.log(body.date);
     await this.crawlService.postData(body);
     return;
   }

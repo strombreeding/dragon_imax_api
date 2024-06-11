@@ -14,8 +14,14 @@ export class Subscription {
   @Prop({ required: true })
   cinemaType: string; // 아이맥스, 4dx
 
-  @Prop({ default: [] })
-  schedule: string[];
+  @Prop({ default: true })
+  enabled: boolean;
+
+  @Prop({ required: true })
+  postImg: string;
+
+  @Prop({ default: false })
+  expired: boolean;
 
   @Prop({ default: new Date() })
   create_at: Date;

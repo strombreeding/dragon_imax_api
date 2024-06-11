@@ -13,14 +13,11 @@ export class User {
   @Prop()
   deviceId: string;
 
-  @Prop()
-  skip_ad: boolean;
+  @Prop({ default: 5 })
+  chur: number;
 
-  @Prop()
-  superCat: number; // 광고로 본 토큰 말하는 거임
-
-  @Prop({})
-  subscriptions: Subscription[];
+  @Prop({ default: '' })
+  fcmToken: string;
 
   @Prop({ default: new Date() })
   create_at: Date;

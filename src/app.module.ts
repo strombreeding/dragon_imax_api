@@ -19,7 +19,7 @@ dotenv.config();
       user: process.env.MONGO_USER,
       pass: process.env.MONGO_PWD,
     }),
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ isGlobal: true }),
     UsersModule,
     SubscriptionsModule,
     CrawlModule,

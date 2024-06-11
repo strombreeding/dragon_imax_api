@@ -1,4 +1,5 @@
 import { ObjectId } from 'mongoose';
+import { Subscription } from 'src/models/subscription';
 
 export interface IFineNewCinemaType {
   cinemaType: string;
@@ -11,7 +12,24 @@ export interface IFineNewCinemaType {
 
 export interface IReceiveCrawlProps {
   cinemaType: string;
-  schedule: string[];
+  schedule: ISchedulProps[];
   movieName: string;
   date: string;
+}
+
+export interface ISchedulProps {
+  cinemaType: string;
+  showing: string[];
+}
+
+export interface ISubscriptionProps {
+  cinemaType: string[];
+  movieName: string;
+  deviceId: string;
+  payChur: number;
+  postImg: string;
+}
+
+export interface ISubListProps extends Subscription {
+  fcmToken: string;
 }
