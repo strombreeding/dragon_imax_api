@@ -30,7 +30,7 @@ export class SubscriptionsService {
         subscriptions[i].deviceId,
       );
       // 탈퇴한 유저의 스크립션을 다 지우긴 하는데, 그래도 예외처리 해놔야함.
-      if (Object(userFcm.fcmToken).length >= 1) {
+      if (Object(userFcm).includes('fcmToken')) {
         obj.fcmToken = userFcm.fcmToken;
         result.push(obj);
       }
