@@ -66,4 +66,14 @@ export class NotificationsController {
     // );
     // return `[${isBe.date}]-[${isBe.cinemaType}]-[${isBe.movieName}] -업데이트-`;
   }
+  @Post('test')
+  async fcmTestController(@Body() body: { fcmToken: string }) {
+    await this.notificationService.fcm(
+      body.fcmToken,
+      '테스트 푸시알림',
+      [],
+      'test',
+      null,
+    );
+  }
 }

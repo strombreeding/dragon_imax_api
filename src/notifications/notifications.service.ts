@@ -61,11 +61,15 @@ export class NotificationsService {
     token: string,
     title: string,
     message: ISchedulProps[],
-    cinemaType: string,
     notificationId: string,
+    cinemaType?: string,
   ) {
     console.log(message);
-    const replaceMessage = reformSchedule(message, cinemaType);
+    let replaceMessage = '테스트 메시지';
+
+    if (cinemaType != null) {
+      replaceMessage = reformSchedule(message, cinemaType);
+    }
 
     console.log(replaceMessage);
     const result = await admin
@@ -79,13 +83,13 @@ export class NotificationsService {
         data: {
           _id: notificationId,
         },
-        // android: {
-        //   notification: {
-        //     title,
-        //     body: replaceMessage,
-        //     // channelId: 'notify',
-        //   },
-        // },
+        android: {
+          notification: {
+            title,
+            body: replaceMessage,
+            channelId: 'notify',
+          },
+        },
       })
       .then((response) => {
         // Response is a message ID string.
