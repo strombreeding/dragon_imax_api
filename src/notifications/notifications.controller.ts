@@ -35,7 +35,7 @@ export class NotificationsController {
         cinemaType,
         movieName,
       );
-    console.log('구독자 수 : ', subscriptor.length);
+    console.log('구독자 수 : ', subscriptor);
     if (subscriptor.length === 0) {
       // 여기서 시스템 로그 찍자.
       // 날짜 영화이름 타입 푸시여부

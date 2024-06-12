@@ -29,8 +29,11 @@ export class SubscriptionsService {
       const userFcm = await this.userService.findUser(
         subscriptions[i].deviceId,
       );
-      obj.fcmToken = userFcm.fcmToken;
-      result.push(obj);
+      // 탈퇴한 유저의 스크립션을 다 지우긴 하는데, 그래도 예외처리 해놔야함.
+      if (Object(userFcm.fcmToken).length >= 1) {
+        obj.fcmToken = userFcm.fcmToken;
+        result.push(obj);
+      }
     }
 
     return result;
