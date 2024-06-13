@@ -37,12 +37,14 @@ export class NotificationsService {
     cinemaType: string,
     date: string,
     schedule: ISchedulProps[],
+    postImg: string,
   ) {
     const newList = await this.notificationModel.create({
       movieName,
       cinemaType,
       date,
       schedule: reformSchedule(schedule, cinemaType),
+      postImg,
     });
     return newList;
   }
@@ -63,33 +65,30 @@ export class NotificationsService {
     message: ISchedulProps[],
     notificationId: string,
     cinemaType?: string,
+    img?: string,
+    data?: Record<string, any>,
   ) {
-    console.log(message);
     let replaceMessage = '테스트 메시지';
 
     if (cinemaType != null) {
       replaceMessage = reformSchedule(message, cinemaType);
     }
 
-    console.log(replaceMessage);
     const result = await admin
       .messaging()
       .sendEachForMulticast({
         tokens: [token],
-        notification: {
-          title: title,
-          body: replaceMessage,
-        },
         data: {
           _id: notificationId,
+          title,
+          body: replaceMessage,
+          img,
+          ...data,
         },
         android: {
-          notification: {
-            title,
-            body: replaceMessage,
-            channelId: 'notify',
-          },
+          priority: 'high',
         },
+        apns: {},
       })
       .then((response) => {
         // Response is a message ID string.

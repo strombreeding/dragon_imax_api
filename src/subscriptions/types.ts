@@ -31,5 +31,6 @@ export interface ISubscriptionProps {
 }
 
 export interface ISubListProps extends Subscription {
+  _doc: any;
   fcmToken: string;
 }

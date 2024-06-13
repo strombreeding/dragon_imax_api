@@ -8,6 +8,7 @@ import { SubscriptionsModule } from './subscriptions/subscriptions.module';
 import { CrawlModule } from './crawl/crawl.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { MoviesModule } from './movies/movies.module';
+import { AlarmModule } from './alarm/alarm.module';
 import * as dotenv from 'dotenv';
 //
 dotenv.config();
@@ -25,6 +26,7 @@ dotenv.config();
     CrawlModule,
     NotificationsModule,
     MoviesModule,
+    AlarmModule,
   ],
   controllers: [AppController],
   providers: [AppService],
