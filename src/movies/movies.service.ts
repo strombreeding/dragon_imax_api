@@ -21,6 +21,14 @@ export class MoviesService {
     }[],
   ) {
     const currentMovie = await this.movieModel.find();
+    if (currentMovie.length <= 0) {
+      await this.movieModel.updateOne(
+        {},
+        { $set: { info: movieList } },
+        { upsert: true },
+      );
+      return;
+    }
     const currentMovieList = currentMovie[0].info.map((item) => item.movieName);
     const nextMovieList = movieList.map((item) => item.movieName);
     const upsertMovieList = currentMovieList.filter(
